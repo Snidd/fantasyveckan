@@ -14,3 +14,66 @@ model Users {
   id   Int    @id @default(autoincrement())
   name String
 }
+
+model Fixture {
+  id             Int              @id @default(autoincrement())
+  homeTeamId     Int
+  homeTeam       Team             @relation(fields: [homeTeamId], name: "homeTeam", references: [id])
+  homeTeamGoals  Int
+  awayTeamGoals  Int
+  awayTeam       Team             @relation(fields: [awayTeamId], name: "awayTeam", references: [id])
+  awayTeamId     Int
+  status         Int
+  gameweek       Gameweek?        @relation(fields: [gameweekId], references: [id])
+  gameweekId     Int?
+  fixtureResults FixtureResults[]
+  fixtureEvents  FixtureEvents[]
+}
+
+model FixtureResults {
+  id        Int     @id @default(autoincrement())
+  player    Player  @relation(fields: [playerId], references: [id])
+  fixture   Fixture @relation(fields: [fixtureId], references: [id])
+  points    Int
+  status    Int
+  playerId  Int
+  fixtureId Int
+}
+
+model FixtureEvents {
+  id        Int     @id @default(autoincrement())
+  player    Player  @relation(fields: [playerId], references: [id])
+  fixture   Fixture @relation(fields: [fixtureId], references: [id])
+  eventType Int
+  point     Int
+  playerId  Int
+  fixtureId Int
+}
+
+model Gameweek {
+  id       Int       @id @default(autoincrement())
+  name     String
+  fixtures Fixture[]
+}
+
+model Player {
+  id              Int              @id @default(autoincrement())
+  teamId          Int
+  shortName       String
+  fullName        String
+  ownedPercentage Decimal
+  cost            Decimal
+  totalPoints     Int
+  fixtureResults  FixtureResults[]
+  fixtureEvents   FixtureEvents[]
+}
+
+model Team {
+  id        Int    @id @default(autoincrement())
+  fullName  String
+  shortName String
+  shortURL  String
+
+  awayFixtures Fixture[] @relation(name: "awayTeam")
+  homeFixtures Fixture[] @relation(name: "homeTeam")
+}
