@@ -2,14 +2,17 @@ lockfileVersion: 5.4
 
 specifiers:
   '@playwright/test': ^1.22.2
+  '@prisma/client': ^4.2.1
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
-  '@typescript-eslint/eslint-plugin': ^5.27.0
-  '@typescript-eslint/parser': ^5.27.0
+  '@trpc/client': ^9.27.0
+  '@trpc/server': ^9.27.0
+  '@typescript-eslint/eslint-plugin': ^5.33.1
+  '@typescript-eslint/parser': ^5.33.1
   autoprefixer: ^10.4.8
   daisyui: ^2.24.0
-  eslint: ^8.16.0
-  eslint-config-prettier: ^8.3.0
+  eslint: ^8.22.0
+  eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
   postcss: ^8.4.16
   prettier: ^2.6.2
@@ -19,9 +22,20 @@ specifiers:
   svelte-check: ^2.7.1
   svelte-preprocess: ^4.10.7
   tailwindcss: ^3.1.8
+  trpc-sveltekit: ^2.3.0
+  trpc-transformer: ^2.0.4
   tslib: ^2.3.1
   typescript: ^4.7.4
   vite: ^3.0.0
+  zod: ^3.18.0
+
+dependencies:
+  '@prisma/client': 4.2.1_prisma@4.2.1
+  '@trpc/client': 9.27.0_@trpc+server@9.27.0
+  '@trpc/server': 9.27.0
+  trpc-sveltekit: 2.3.0_@trpc+server@9.27.0
+  trpc-transformer: 2.0.4
+  zod: 3.18.0
 
 devDependencies:
   '@playwright/test': 1.25.0
@@ -47,6 +61,13 @@ devDependencies:
   vite: 3.0.8
 
 packages:
+
+  /@babel/runtime/7.18.9:
+    resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
 
   /@cloudflare/workers-types/3.14.1:
     resolution: {integrity: sha512-B1/plF62pt+H2IJHvApK8fdOJAVsvojvacuac8x8s+JIyqbropMyqNqHTKLm3YD8ZFLGwYeFTudU+PQ7vGvBdA==}
@@ -169,10 +190,27 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@prisma/client/4.2.1_prisma@4.2.1:
+    resolution: {integrity: sha512-PZBkY60+k5oix+e6IUfl3ub8TbRLNsPLdfWrdy2eh80WcHTaT+/UfvXf/B7gXedH7FRtbPFHZXk1hZenJiJZFQ==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826
+      prisma: 4.2.1
+    dev: false
+
+  /@prisma/engines-version/4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826:
+    resolution: {integrity: sha512-tktkqdiwqE4QhmE088boPt+FwPj1Jub/zk+5F6sEfcRHzO5yz9jyMD5HFVtiwxZPLx/8Xg9ElnuTi8E5lWVQFQ==}
+    dev: false
+
   /@prisma/engines/4.2.1:
     resolution: {integrity: sha512-0KqBwREUOjBiHwITsQzw2DWfLHjntvbqzGRawj4sBMnIiL5CXwyDUKeHOwXzKMtNr1rEjxEsypM14g0CzLRK3g==}
     requiresBuild: true
-    dev: true
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -271,6 +309,19 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@trpc/client/9.27.0_@trpc+server@9.27.0:
+    resolution: {integrity: sha512-Yh+oDBiANArjDx69bSnXqIK36wjlRm8iGLQkMmrvTTFwVRt3hgfreCzjyj4PgNEd4SNX4iGrhLLPIDHeH+qlJA==}
+    peerDependencies:
+      '@trpc/server': 9.27.0
+    dependencies:
+      '@babel/runtime': 7.18.9
+      '@trpc/server': 9.27.0
+    dev: false
+
+  /@trpc/server/9.27.0:
+    resolution: {integrity: sha512-5A/d5U9Y8L6+4q46a9gLackTyMRUFyNubo6JlIpSxtea/wW8teR6Azux4gg/uKIM3+6+lgg/HxQHWvwkG0VOSg==}
+    dev: false
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -686,6 +737,13 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /copy-anything/3.0.2:
+    resolution: {integrity: sha512-CzATjGXzUQ0EvuvgOCI6A4BGOo2bcVx8B+eC2nF862iv9fopnPQwlrbACakNCHRIJbCSBj+J/9JeDf60k64MkA==}
+    engines: {node: '>=12.13'}
+    dependencies:
+      is-what: 4.1.7
+    dev: false
+
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -740,6 +798,10 @@ packages:
     dependencies:
       ms: 2.1.2
     dev: true
+
+  /decimal.js/10.4.0:
+    resolution: {integrity: sha512-Nv6ENEzyPQ6AItkGwLE2PGKinZZ9g59vSh2BeH6NqPu0OTKZ5ruJsVqh/orbAnqXc9pBbgXAIrc2EyaCj8NpGg==}
+    dev: false
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
@@ -1470,6 +1532,11 @@ packages:
     engines: {node: '>=0.12.0'}
     dev: true
 
+  /is-what/4.1.7:
+    resolution: {integrity: sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==}
+    engines: {node: '>=12.13'}
+    dev: false
+
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
@@ -1884,7 +1951,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.2.1
-    dev: true
 
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
@@ -1921,6 +1987,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
 
   /regexparam/2.0.1:
     resolution: {integrity: sha512-zRgSaYemnNYxUv+/5SeoHI0eJIgTL/A2pUtXUPLHQxUldagouJ9p+K6IbIZ/JiQuCEv2E2B1O11SjVQy3aMCkw==}
@@ -2120,6 +2190,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /superjson/1.9.1:
+    resolution: {integrity: sha512-oT3HA2nPKlU1+5taFgz/HDy+GEaY+CWEbLzaRJVD4gZ7zMVVC4GDNFdgvAZt6/VuIk6D2R7RtPAiCHwmdzlMmg==}
+    engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.2
+    dev: false
+
   /supports-color/7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
@@ -2296,6 +2373,21 @@ packages:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
     dev: true
 
+  /trpc-sveltekit/2.3.0_@trpc+server@9.27.0:
+    resolution: {integrity: sha512-sTx5pIJQeUxJm6tynUNJka5pWNfYwCXQpu8NVyhkCtuQOrptXO7/URKn52MNuDLhpuVdqQKQ7P6zmV/JbGugdw==}
+    peerDependencies:
+      '@trpc/server': ^9.27.0
+    dependencies:
+      '@trpc/server': 9.27.0
+    dev: false
+
+  /trpc-transformer/2.0.4:
+    resolution: {integrity: sha512-lrGQD51gJGfsipYilEcCCHP9NwUAmdWgC9Mjf9EmWYOUBnrTz8Shy/J8ljNN8/r/xlkYbm25BPI5FMh9EhPXVg==}
+    dependencies:
+      decimal.js: 10.4.0
+      superjson: 1.9.1
+    dev: false
+
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
@@ -2454,3 +2546,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.18.0:
+    resolution: {integrity: sha512-gwTm8RfUCe8l9rDwN5r2A17DkAa8Ez4Yl4yXqc5VqeGaXaJahzYYXbTwvhroZi0SNBqTwh/bKm2N0mpCzuw4bA==}
+    dev: false

@@ -16,12 +16,12 @@
 		"@playwright/test": "^1.22.2",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
-		"@typescript-eslint/eslint-plugin": "^5.27.0",
-		"@typescript-eslint/parser": "^5.27.0",
+		"@typescript-eslint/eslint-plugin": "^5.33.1",
+		"@typescript-eslint/parser": "^5.33.1",
 		"autoprefixer": "^10.4.8",
 		"daisyui": "^2.24.0",
-		"eslint": "^8.16.0",
-		"eslint-config-prettier": "^8.3.0",
+		"eslint": "^8.22.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"postcss": "^8.4.16",
 		"prettier": "^2.6.2",
@@ -35,5 +35,13 @@
 		"typescript": "^4.7.4",
 		"vite": "^3.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@prisma/client": "^4.2.1",
+		"@trpc/client": "^9.27.0",
+		"@trpc/server": "^9.27.0",
+		"trpc-sveltekit": "^2.3.0",
+		"trpc-transformer": "^2.0.4",
+		"zod": "^3.18.0"
+	}
 }
